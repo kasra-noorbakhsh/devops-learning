@@ -1,0 +1,15 @@
+IMAGE_Ubuntu_focal    = "ubuntu/focal64"
+IMAGE_Ubuntu_jammy    = "ubuntu/jammy64"
+IMAGE_Ubuntu_trusty64 = "ubuntu/trusty64"
+IMAGE_Centos_7        = "centos/7"
+
+Vagrant.configure("2") do |config|
+  config.vm.box = IMAGE_Ubuntu_focal
+  config.vm.hostname = "test"
+  config.vm.provider "virtualbox" do |first_vag_vm|
+    first_vag_vm.name = "first_vag_vm"
+    first_vag_vm.memory = 1024
+    first_vag_vm.cpus = 1
+  end
+  config.vm.provision :shell, path: "bootstrap.sh"
+end
